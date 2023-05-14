@@ -1,0 +1,29 @@
+[importlinter]
+root_package = hexagonal_sample
+
+[importlinter:contract:1]
+name = Ensure domain does not depend on other layers
+type = forbidden
+source_modules =
+    hexagonal_sample.domain
+forbidden_modules =
+    hexagonal_sample.application
+    hexagonal_sample.interfaces
+    hexagonal_sample.infrastructure
+
+[importlinter:contract:2]
+name = Ensure application only depends on domain
+type = forbidden
+source_modules =
+    hexagonal_sample.application
+forbidden_modules =
+    hexagonal_sample.interfaces
+    hexagonal_sample.infrastructure
+
+[importlinter:contract:3]
+name = Ensure infrastructure does not depend on interfaces
+type = forbidden
+source_modules =
+    hexagonal_sample.infrastructure
+forbidden_modules =
+    hexagonal_sample.interfaces
